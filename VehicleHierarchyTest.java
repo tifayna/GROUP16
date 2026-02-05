@@ -53,7 +53,7 @@ class Motorcycle extends Vehicle {
         this.engineCC = engineCC;
         this.hasHelmetStorage = hasHelmetStorage;
     }
-
+    
     @Override
     public void displayInfo() {
         super.displayInfo();
@@ -67,7 +67,7 @@ class Motorcycle extends Vehicle {
 class ElectricCar extends Car {
     private double batteryCapacity;
     private int range;
-
+    
     public ElectricCar(String brand, String model, int year, double price,
                        int numDoors, String fuelType, double batteryCapacity, int range) {
         super(brand, model, year, price, numDoors, fuelType);
@@ -79,7 +79,7 @@ class ElectricCar extends Car {
     public void startEngine() {
         System.out.println(brand + " " + model + " electric motor activated silently");
     }
-
+    
     public void charge() { System.out.println("Charging " + brand + " " + model + "... Battery: " + batteryCapacity + " kWh"); }
     public void displayBatteryStatus() { System.out.println(brand + " " + model + " battery: " + batteryCapacity + " kWh, range: " + range + " km"); }
 }

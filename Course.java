@@ -13,7 +13,8 @@ public class Course {
     private int maxCapacity;
     private int enrolledStudents;
     private boolean isActive;
-
+    
+    //Default Constructors
     public Course(){
         this.courseCode = "UNKNOWN";
         this.courseName = "unknown course";
@@ -23,7 +24,7 @@ public class Course {
         this.enrolledStudents = 0;
         this.isActive = true;
     }
-
+    //Parameterized Constructor
     public Course(String courseCode,String courseName,int creditHours,int maxCapacity){
         this.courseCode = courseCode;
         this.courseName = courseName;
@@ -32,7 +33,7 @@ public class Course {
         this.enrolledStudents = 0;
         this.isActive = true;
     }
-
+    // getters for attribute
     public String getCourseCode(){
         return courseCode; }
     public String getCourseName(){
@@ -45,19 +46,19 @@ public class Course {
         return enrolledStudents; }
     public boolean getIsActive(){
         return isActive; }
-
+    //setters with validation
     public void setCreditHours(int creditHours){
         if (creditHours >=1 && creditHours <=6){
             this.creditHours = creditHours;
         }
     }
-
+    
     public void setMaxCapacity(int maxCapacity){
         if (maxCapacity > 0){
             this.maxCapacity = maxCapacity;
         }
     }
-
+    //behaviour method
     public void assignInstructor(String name){
         this.instructorName = name;
     }
