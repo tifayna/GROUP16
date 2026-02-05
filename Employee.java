@@ -6,13 +6,16 @@
  * @version (5/2/2026)
  */
 public class Employee {
-
+//Attributes (private for encapsulation)
     private String employeeId;
     private String fullName;
     private String department;
     private double basicSalary;
     private int yearsOfService;
 
+//constractors
+
+//default constractors
     public Employee() {
         this.employeeId = "Unknown";
         this.fullName = "Unknown";
@@ -21,7 +24,7 @@ public class Employee {
         this.yearsOfService = 0;
     }
 
-
+//parameterized constractors
     public Employee(String employeeId, String fullName, String department, double basicSalary) {
         this.employeeId = employeeId;
         this.fullName = fullName;
@@ -30,7 +33,7 @@ public class Employee {
         this.yearsOfService = 0;
     }
 
-    
+//To add getters
     public String getEmployeeId() {
         return employeeId;
     }
@@ -51,7 +54,7 @@ public class Employee {
         return yearsOfService;
     }
 
-    
+ // To add setters with validation   
     public void setBasicSalary(double basicSalary) {
         if (basicSalary >= 500000) {
             this.basicSalary = basicSalary;
@@ -64,7 +67,7 @@ public class Employee {
         }
     }
 
-    
+ // To add Behaviour Methods   
     public double calculateBonus() {
         double bonusPercentage = yearsOfService * 0.10;
         if (bonusPercentage > 0.50) {
@@ -99,7 +102,7 @@ public class Employee {
         System.out.println("Net Salary: " + calculateNetSalary());
         System.out.println("-----------------------------");
     }
-
+// to test class in the main method
     public static void main(String[] args) {
         System.out.println("=== Employee Payroll Exercise ===\n");
 
