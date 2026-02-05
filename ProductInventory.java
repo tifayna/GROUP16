@@ -7,6 +7,7 @@
  */
 public class ProductInventory
 {
+   //Attributes
    private String productCode;
    private String productName;
    private String category;
@@ -14,39 +15,45 @@ public class ProductInventory
    private int quantityInStock;
    private int reorderLevel;
    
-public ProductInventory(String productCode,String productName,String category,double unitPrice,int quantityInStock,int reorderLevel){
-    this.productCode=productCode;
-    this.productName=productName;
-    this.category=category;
-    this.reorderLevel=10;
-    setunitPrice(unitPrice);
-    setquantityInStock(quantityInStock);}
+   //Constructors
+   public ProductInventory(String productCode,String productName,String category,double unitPrice,int quantityInStock,int reorderLevel){
+      this.productCode=productCode;
+      this.productName=productName;
+      this.category=category;
+      this.reorderLevel=10;
+      setunitPrice(unitPrice);
+      setquantityInStock(quantityInStock);
+    }
     
-public String getproductCode(){return productCode;}
-public String getproductName(){return productName;}
-public String getcategory(){return category;}
-public double getunitPrice(){return unitPrice;}
-public int getquantityInStock(){return quantityInStock;}
-public int getreorderLevel(){return reorderLevel;}
-
-public void setunitPrice(double unitPrice){
-    if (unitPrice > 0){
-        this.unitPrice=unitPrice;
+   //Getters 
+   public String getproductCode(){return productCode;}
+   public String getproductName(){return productName;}
+   public String getcategory(){return category;}
+   public double getunitPrice(){return unitPrice;}
+   public int getquantityInStock(){return quantityInStock;}
+   public int getreorderLevel(){return reorderLevel;}
+   
+//Setters with validation
+   public void setunitPrice(double unitPrice){
+      if (unitPrice > 0){
+          this.unitPrice=unitPrice;
     }
 }
 
-public void setquantityInStock(int quantityInStock){
+   public void setquantityInStock(int quantityInStock){
     if(quantityInStock >= 0){
         this.unitPrice = unitPrice;
     }
 }
 
-public void setreorderLevel(int reorderLevel ){
+   public void setreorderLevel(int reorderLevel ){
     if(reorderLevel > 0){
         this.reorderLevel = reorderLevel;
     }
 }
 
+//Behaviour methods
+//AddStock
 public void addStock(int amount) {
         if (amount > 0) {
             quantityInStock += amount;
@@ -56,6 +63,7 @@ public void addStock(int amount) {
         }
 }
 
+//Select Product
 public boolean sellProduct(int amount) {
         if (amount <= 0) {
             System.out.println("Error: Sale quantity must be positive");
@@ -71,15 +79,18 @@ public boolean sellProduct(int amount) {
             return false;
         }
     }
-    
+ 
+ //Calcutate stock value   
 public double calculateStockValue() {
         return unitPrice * quantityInStock;
     }
-    
+
+//Check reaorder status
 public boolean needsReorder() {
         return quantityInStock <= reorderLevel;
     }
-    
+
+//Apply discount
 public void applyDiscount(double percent) {
         if (percent > 0 && percent <= 100) {
             double discountFactor = (100 - percent) / 100.0;
@@ -89,7 +100,8 @@ public void applyDiscount(double percent) {
             System.out.println("Invalid discount percentage");
         }
     }
-    
+ 
+//Display product information
 public void displayProductInfo() {
         System.out.println("\n--- Product Information ---");
         System.out.println("Product Code: " + productCode);
@@ -101,7 +113,7 @@ public void displayProductInfo() {
         System.out.printf("Total Stock Value: $%.2f%n", calculateStockValue());
         System.out.println("Needs Reorder: " + (needsReorder() ? "YES" : "NO"));
     }
-    
+//Main method for testing    
 public static void main(String[] args) {
         System.out.println("=== Product Inventory ===\n");
         
@@ -109,44 +121,31 @@ public static void main(String[] args) {
         ProductInventory product2 = new ProductInventory("PRD002", "Office Chair", "Furniture", 350000, 8);
         ProductInventory product3 = new ProductInventory("PRD003", "Notebook", "Stationery", 5000, 100);
         
-        System.out.println("Initial Product Details:");
+        //Display all products
         product1.displayProductInfo();
         product2.displayProductInfo();
         product3.displayProductInfo();
         
-        System.out.println("\n--- Sales Operations ---");
-        product1.sellProduct(20); 
-        
-        System.out.println("\n--- Reorder Check ---");
-        if (product2.needsReorder()) {
-            System.out.println(product2.getproductName() + " needs reordering!");
-        }
-        
-        System.out.println("\n--- Stock Addition ---");
+        // Sell 20 laptops
+        product1.sellProduct(20);
+
+        // Check reorder for product2
+        System.out.println("Product2 needs reorder: " + product2.needsReorder());
+
+        // Add 50 units to product2
         product2.addStock(50);
-        
-        System.out.println("\n--- Discount Application ---");
+
+        // Apply 15% discount to product3
         product3.applyDiscount(15);
-        
-        System.out.println("\n--- Final Stock Values ---");
-        System.out.printf("Total value of %s stock: $%.2f%n", 
-            product1.getproductName(), product1.calculateStockValue());
-        System.out.printf("Total value of %s stock: $%.2f%n", 
-            product2.getproductName(), product2.calculateStockValue());
-        System.out.printf("Total value of %s stock: $%.2f%n", 
-            product3.getproductName(), product3.calculateStockValue());
-        
-        System.out.println("\n--- Final Product Status ---");
+
+        // Display final stock values
         product1.displayProductInfo();
         product2.displayProductInfo();
         product3.displayProductInfo();
-        
+
         System.out.println("\n=== Exercise Complete ===");
     }
 }
 
-
-
-  
 
     

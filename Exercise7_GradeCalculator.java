@@ -8,19 +8,20 @@
 import java.util.Scanner;
 public class Exercise7_GradeCalculator
 {
-   
-     public static void main(String[] args) {
+   public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("=== Grade Calculator ===\n");
-
         
+        //Get Score from uder
         System.out.print("Enter your exam score (0-100): ");
         int score = scanner.nextInt();
-
+        
+        //Validation input
         if (score < 0 || score > 100) {
             System.out.println("Error: Score must be between 0 and 100!");
         } else {
+            //Determine grade
             char grade;
             String description;
 
@@ -43,11 +44,13 @@ public class Exercise7_GradeCalculator
                 grade = 'F';
                 description = "Fail";
             }
-
+            
+            //Display results
             System.out.println("\n--- Results ---");
             System.out.println("Score: " + score);
             System.out.println("Grade: " + grade + " (" + description + ")");
-
+            
+            //Pass/Fail status
             if (score >= 50) {
                 System.out.println("Status: PASSED! Congratulations!");
             } else {
