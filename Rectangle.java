@@ -1,127 +1,50 @@
+public class Rectangle extends Shape {
+    private double width = 1.0;
+    private double length = 1.0;
 
-/**
- * Write QUESTION 5 Rectangle here.
- *
- * @author (GROUP16)
- * @version (5-2-2026)
- */
-public class Rectangle{
-    private double length;
-    private double width;
-    private String color;
-    private boolean isFilled;
-    
-    public Rectangle(){
-        this.length=1;
-        this.width=1;
-        this.color="white";
-        this.isFilled=false;
-        
+    public Rectangle() {
     }
-    public Rectangle(double length,double width){
-        setLength(length);
-        setWidth(width);
-        this.color="white";
-        this.isFilled=false;
+
+    public Rectangle(double width, double length) {
+        this.width = width;
+        this.length = length;
     }
-    public Rectangle(double length,double width,String color,boolean isFilled){
-        setLength(length);
-        setWidth(width);
-        this.color=color;
-        this.isFilled=isFilled;
-        
+
+    public Rectangle(double width, double length, String color, boolean filled) {
+        super(color, filled);
+        this.width = width;
+        this.length = length;
     }
-    public double getLength(){
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getLength() {
         return length;
     }
-    public double getWidth(){
-        return width;
-        
-    }
-    public String getColor(){
-    return color;    
-    }
-    public boolean isFilled(){
-        return isFilled;
-    }
-    public void setLength(double length){
-        if (length>0){
-            this.length=length;
-        
-        }else{
-            System.out.println("length must be greater than 0");
-        }
-    }
-    public void setWidth(double width){
-        if (width>0){
-            this.width=width;
-        
-        }else{
-            System.out.println("width must be greater than 0");
-        }
-    }
-    public void setColor(String color){
-        this.color=color;
-    }
-    public void setFilled(boolean isFilled){
-        this.isFilled=isFilled;
-    }
-    public double calculateArea(){
-        return length*width;
-    }
-    public double calculatePerimeter(){
-        return 2*(length +width);
-    }
-    public double calculateDiagonal(){
-        return Math.sqrt(Math.pow(length,2)+Math.pow(width,2));
-    }
-    public boolean isSquare(){
-        return length==width;
-    }
-    public void resize(double factor){
-        if(factor>0){
-            length*=factor;
-            width*=factor;
-        }else{
-            System.out.print("resize factor must be greater than 0");
-        }
-    }
-    public String compare(Rectangle other){
-        if (this.calculateArea()> other.calculateArea()){
-            return "larger";
-        }else if
-            (this.calculateArea()< other.calculateArea()){
-            return "samller";
-        }else{
-            return "equal";
-        }
-    }
-    public void displayInfo(){
-        System.out.println("Rectangle Details:");
-        System.out.println("length:" +length);
-        System.out.println("width:" +width);
-        System.out.println("color:"+color);
-        System.out.println("filled:" +isFilled);
-        System.out.println("Area:" +calculateArea());
-        System.out.println("perimeter:" +calculatePerimeter());
-        System.out.println("Diagonal:" +calculateDiagonal());
-        System.out.println("Is Square:" +isSquare());
-        System.out.println("----------------------------------");
-        
-        
 
+    public void setLength(double length) {
+        this.length = length;
     }
-    public static  void main(String[] args){
-        System.out.println("==Rectangle Geometry exercise==");
-        Rectangle rect1=new Rectangle();
-        Rectangle rect2=new Rectangle(10,5);
-        Rectangle rect3=new Rectangle(7,7,"blue",true);
-        rect1.displayInfo();
-        rect2.displayInfo();
-        rect3.displayInfo();
-        
-        System.out.println("rect1 is square;" +rect1.isSquare());
-        System.out.println("rect2 is square;" +rect2.isSquare());
-        System.out.println("rect3 is square;" +rect3.isSquare());
+
+    public double getArea() {
+        return width * length;
+    }
+
+    public double getPerimeter() {
+        return 2 * (width + length);
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle[" + super.toString() +
+                ", width=" + width +
+                ", length=" + length + "]";
     }
 }
+
